@@ -1,1 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,300&family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+  --font-primary: 'Lato', sans-serif;
+  --font-accent: 'Philosopher', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-accent);
+  font-weight: 700;
+  font-style: italic;
+  background: #222;
+  text-align: center;
+}
+
+header {
+  margin: 2rem 0 1rem;
+}
+
+svg {
+  height: 2rem;
+}
+
+span {
+  vertical-align: top;
+  font-size: 2.75rem;
+  line-height: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h3 {
+  text-align: center;
+}
