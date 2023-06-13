@@ -1,0 +1,37 @@
+span {
+  font-size: 3rem;
+  font-style: italic;
+  font-family: var(--font-accent);
+  color: var(--primary-color);
+}
+
+.logo {
+  display: flex;
+  height: 2rem;
+  align-items: center;
+}
+
+.logo-svg {
+  height: 2rem;
+}
+
+nav {
+  font-family: var(--font-accent);
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+nav a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 400;
+  padding: 1rem 1.5rem;
+  height: 100%;
+}
+
+nav a:hover {
+  color: var(--primary-color-dark);
+  background-color: var(--accent-color-lighter);
+
+}

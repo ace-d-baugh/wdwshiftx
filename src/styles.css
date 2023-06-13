@@ -5,6 +5,19 @@
 :root {
   --font-primary: 'Lato', sans-serif;
   --font-accent: 'Philosopher', sans-serif;
+  --primary-color-lighter: #F2E6FF;
+  --primary-color-light: #DEBFFF;
+  --primary-color: #BD80FF;
+  --primary-color-dark: #8E60BF;
+  --primary-color-darker: #2F2040;
+  --accent-color-lighter: #FFFBE6;
+  --accent-color-light: #FFF4BF;
+  --accent-color: #FFEA80;
+  --accent-color-dark: #BFAF60;
+  --accent-color-darker: #403B20;
+  --success-color: #9BE673;
+  --info-color: #80D5FF;
+  --warning-color: #FF808B;
 }
 
 * {
@@ -13,31 +26,36 @@
   box-sizing: border-box;
 }
 
-body {
+.font-primary {
+  font-family: var(--font-primary);
+}
+
+.font-accent {
   font-family: var(--font-accent);
-  font-weight: 700;
-  font-style: italic;
-  background: #222;
-  text-align: center;
+}
+
+body {
+  color: var(--primary-color-darker);
+  font-family: var(--font-primary);
 }
 
 header {
-  margin: 2rem 0 1rem;
+  background-color: var(--primary-color-lighter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
 }
 
-svg {
-  height: 2rem;
+main {
+  min-height: calc(100vh - 8rem);
+  padding: 1.5rem;
 }
 
-span {
-  vertical-align: top;
-  font-size: 2.75rem;
-  line-height: 2rem;
-  margin: 0;
-  padding: 0;
-}
-
-h1,
-h3 {
+footer {
+  background-color: var(--primary-color-lighter);
+  color: var(--primary-color-darker);
+  padding: 1.5rem;
   text-align: center;
 }
+
