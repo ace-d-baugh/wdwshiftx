@@ -18,18 +18,19 @@ import {
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+//import { CookieService } from 'ngx-cookie-service';
+
+// Import components
 import { BaseLayoutComponent } from './shared/base-layout/base-layout.component';
 import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    BaseLayoutComponent,
-    HomeComponent
-  ],
+  declarations: [AppComponent, BaseLayoutComponent, HomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FontAwesomeModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,

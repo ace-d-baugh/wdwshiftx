@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { faMagnifyingGlass, faHandshake } from '@fortawesome/free-solid-svg-icons';
 //import { CookieService } from 'ngx-cookie-service';
 
 
@@ -10,4 +11,5 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent {
 
+  faMagnifyingGlass = faMagnifyingGlass;
 }

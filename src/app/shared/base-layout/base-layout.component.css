@@ -1,8 +1,12 @@
+header {
+  z-index: 100;
+}
+
 span {
   font-size: 3rem;
   font-style: italic;
-  font-family: var(--font-accent);
-  color: var(--primary-color);
+  font-family: var(--ff-accent);
+  color: var(--clr-primary);
 }
 
 .logo {
@@ -16,14 +20,14 @@ span {
 }
 
 nav {
-  font-family: var(--font-accent);
+  font-family: var(--ff-accent);
   font-size: 2rem;
   display: flex;
   align-items: center;
 }
 
 nav a {
-  color: var(--primary-color);
+  color: var(--clr-primary);
   text-decoration: none;
   font-weight: 400;
   padding: 1rem 1.5rem;
@@ -31,7 +35,7 @@ nav a {
 }
 
 nav a:hover {
-  color: var(--primary-color-dark);
-  background-color: var(--accent-color-lighter);
+  color: var(--clr-text);
+  background-color: var(--clr-accent);
 
 }
