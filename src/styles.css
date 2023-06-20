@@ -29,27 +29,32 @@
   font-family: var(--ff-accent);
 }
 
+.clr-primary-light {
+  color: var(--clr-primary-light);
+}
+
+.clr-primary {
+  color: var(--clr-primary);
+}
+
+.clr-secondary {
+  color: var(--clr-secondary);
+}
+
+.clr-text {
+  color: var(--clr-text);
+}
+
+.clr-accent {
+  color: var(--clr-accent);
+}
+
 body {
   color: var(--clr-text);
   font-family: var(--ff-primary);
 }
 
-header {
-  background: var(--clr-primary-lighter);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 1.5rem;
-}
-
 main {
   min-height: calc(100vh - 8rem);
-}
-
-footer {
-  background: var(--clr-primary-light);
-  color: var(--clr-text);
-  padding: 1.5rem;
-  text-align: center;
 }
 

@@ -14,7 +14,6 @@ h6 {
   height: 80vh;
   position: relative;
   overflow: hidden;
-  margin-bottom: 10rem;
 }
 
 .hero-section::before {
@@ -26,34 +25,36 @@ h6 {
   height: 200%;
   background: var(--clr-primary-light);
   border-radius: 0 0 50% 0;
-  transform: translate(-20%, -50%);
+  transform: translate(-10%, -50%);
 }
 
 .hero-section-text {
-  width: 100%;
-  height: 100%;
   display: flex;
   flex: 1;
   flex-direction: column;
-  margin-top: 15vh;
-  padding: 8rem;
+  justify-content: center;
   color: var(--clr-primary-dark);
   z-index: 1;
 }
 
 .hero-section-text h1 {
   font-size: 5rem;
-  margin-bottom: 1.5rem;
   line-height: 4rem;
+  margin-left: 3rem;
 }
 
 .hero-section-text p {
   font-size: 1.5rem;
-  margin-bottom: 8rem;
-  width: 40ch;
+  margin: 2rem 0 8rem;
+  line-height: 1.75rem;
+  margin-left: 3rem;
 }
 
-.hero-section-text .btn {
+.hero-section-CTA {
+  margin-left: 3rem;
+}
+
+.hero-section-CTA .btn {
   font-size: 1.5rem;
   padding: 1rem 2rem;
   border-radius: 0.5rem;
@@ -65,17 +66,153 @@ h6 {
 }
 
 .hero-section-text .btn:hover {
-  background-color: var(--clr-secondary);
+  background-color: var(--clr-text);
+  color: var(--clr-secondary);
+  transform: scale(1.1);
+  box-shadow: 0 0.5rem 1rem var(--clr-text);
 }
 
 .hero-section-image {
   flex: 1;
   display: flex;
   align-items: center;
+  justify-content: center;
   z-index: 2;
 }
 
 .hero-section-image img {
-  width: 55%;
-  height: 55%;
+  width: clamp(20vh, 60%, 30vh);
 }
+
+.pain-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  margin: 2rem 0;
+  padding: 2rem 5rem;
+  background-color: var(--clr-text);
+  color: var(--clr-primary-light);
+}
+
+.pain-section-image {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pain-section-image h3 {
+  padding: 10rem;
+  border: 2px dashed var(--clr-accent);
+}
+
+.pain-section-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h2 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+.pain-section-text ul {
+  margin: 2rem 0;
+}
+
+.pain-section-text ul li {
+  margin-left: 2rem;
+}
+
+.benefits-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.benefits {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.benefit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.benefit-icon {
+  height: 8.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.benefit-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.benefit-text {
+  font-size: 1.5rem;
+  width: 24ch;
+}
+
+.testimonials-section,
+.faq-section {
+  background-color: var(--clr-primary-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 5rem;
+}
+
+.testimonials {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: start;
+  justify-content: space-around;
+}
+
+.testimonial-card {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 2rem 1rem;
+  border: 2px solid var(--clr-text);
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 0.5rem 1rem var(--clr-text);
+  transition: all 0.2s ease-in-out;
+}
+
+.testimonial-card:hover {
+  scale: 1.1;
+
+}
+
+.testimonial-card img {
+  width: 10rem;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+.testimonial-card p {
+  font-size: 1.5rem;
+  width: 24ch;
+}
+
+
+

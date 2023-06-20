@@ -1,4 +1,9 @@
 header {
+  background: var(--clr-primary-lighter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
   z-index: 100;
 }
 
@@ -37,5 +42,11 @@ nav a {
 nav a:hover {
   color: var(--clr-text);
   background-color: var(--clr-accent);
+}
 
+footer {
+  background: var(--clr-primary-light);
+  color: var(--clr-text);
+  padding: 1.5rem;
+  text-align: center;
 }
