@@ -214,5 +214,42 @@ h2 {
   width: 24ch;
 }
 
+.features-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+}
+
+.features {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.features-left,
+.features-right {
+  flex: 1;
+  padding: 2rem;
+  flex-direction: column;
+}
+
+.feature {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.feature-star img {
+  height: 2rem;
+  margin-right: .75rem;
+}
+
+.feature-title {
+  font-size: 1.1rem;
+}
+
 
 
