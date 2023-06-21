@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { faMagnifyingGlass, faHandshake } from '@fortawesome/free-solid-svg-icons';
-//import { CookieService } from 'ngx-cookie-service';
 
 
 @Component({
@@ -11,5 +9,15 @@ import { faMagnifyingGlass, faHandshake } from '@fortawesome/free-solid-svg-icon
 })
 export class HomeComponent {
 
-  faMagnifyingGlass = faMagnifyingGlass;
+  faqQuestions = document.querySelectorAll(".faq");
+  faqAnswers = document.querySelectorAll(".faq-a");
+  faqIcons = document.querySelectorAll(".faq-icon");
+
+// faqQuestions.forEach((faqQuestion, index) => {
+//   faqQuestion.addEventListener('click', () => {
+//     faqIcons[index].classList.toggle("expand");
+//     faqAnswers[index].classList.toggle("expand");
+//   });
+// });
+
 }
