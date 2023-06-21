@@ -332,63 +332,63 @@
   <h2>FAQs</h2>
   <div class="faqs">
     <!-- FAQ 1 -->
-    <div class="faq">
+    <div class="faq" (click)="toggleFAQ(1)">
       <div class="faq-question">
         <div class="faq-question-text">
           <h3>Why do I need to enter my HubID and PERNER?</h3>
           </div>
-        <div class="faq-icon faq-rotate">+</div>
+        <div class="faq-icon" [ngClass]="{'faq-rotate': faqOpen[1]}">+</div>
       </div>
-      <div class="faq-answer">
+      <div class="faq-answer" [ngClass]="{'expand': faqOpen[1]}">
         <p>This is for a couple of reasons. 1.) To prove you are indeed a Cast Member. 2.) To keep our site from being filled with fake accounts.</p>
       </div>
     </div>
     <!-- FAQ 2 -->
-    <div class="faq">
+    <div class="faq" (click)="toggleFAQ(2)">
       <div class="faq-question">
         <div class="faq-question-text">
           <h3>Are my HubID and PERNER saved somewhere?</h3>
         </div>
-        <div class="faq-icon">+</div>
+        <div class="faq-icon" [ngClass]="{'faq-rotate': faqOpen[2]}">+</div>
       </div>
-      <div class="faq-answer hidden">
+      <div class="faq-answer" [ngClass]="{'expand': faqOpen[2]}">
         <p>No. We do not save your HubID or PERNER. They are only used for site security.</p>
       </div>
     </div>
     <!-- FAQ 3 -->
-    <div class="faq">
+    <div class="faq" (click)="toggleFAQ(3)">
       <div class="faq-question">
         <div class="faq-question-text">
-          <h3></h3>
+          <h3>How do I create an account?</h3>
         </div>
-        <div class="faq-icon">+</div>
+        <div class="faq-icon" [ngClass]="{'faq-rotate': faqOpen[3]}">+</div>
       </div>
-      <div class="faq-answer hidden">
-        <p></p>
+      <div class="faq-answer" [ngClass]="{'expand': faqOpen[3]}">
+        <p>Click on the "Get Started" link here in this answer or in the header and select "Create Account". Enter your name, email, phone number, HubId, PERNER, and a password. Once everything is verified, you'll get an email to activate your account. Once your account is activated, you will be able to find and post shifts.</p>
       </div>
     </div>
     <!-- FAQ 4 -->
-    <div class="faq">
+    <div class="faq" (click)="toggleFAQ(4)">
       <div class="faq-question">
         <div class="faq-question-text">
-          <h3></h3>
+          <h3>How do I reset my password?</h3>
         </div>
-        <div class="faq-icon">+</div>
+        <div class="faq-icon" [ngClass]="{'faq-rotate': faqOpen[4]}">+</div>
       </div>
-      <div class="faq-answer hidden">
-        <p></p>
+      <div class="faq-answer" [ngClass]="{'expand': faqOpen[4]}">
+        <p>On the sign-in page, there is a link for "Forgot Password", follow the prompts. Enter the email address you used to create an account and hit submit. If it matches the one we have on file, we will send you an email to that address with further directions to create a new password and sign in.</p>
       </div>
     </div>
     <!-- FAQ 5 -->
-    <div class="faq">
+    <div class="faq" (click)="toggleFAQ(5)">
       <div class="faq-question">
         <div class="faq-question-text">
-          <h3></h3>
+          <h3>Why would I want to use my disney email?</h3>
         </div>
-        <div class="faq-icon">+</div>
+        <div class="faq-icon" [ngClass]="{'faq-rotate': faqOpen[5]}">+</div>
       </div>
-      <div class="faq-answer hidden">
-        <p></p>
+      <div class="faq-answer" [ngClass]="{'expand': faqOpen[5]}">
+        <p>Not only is it another way to verify you are a cast member, but you now have the ability to moderate roles and locations by adding them to our database for users to choose from, edit ones that have been added, as well as delete ones no longer in use.</p>
       </div>
     </div>
   </div>

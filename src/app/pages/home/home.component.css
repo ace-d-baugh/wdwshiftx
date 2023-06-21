@@ -270,7 +270,6 @@ h2 {
   justify-content: space-between;
   padding: 1rem;
   border-radius: .5rem;
-  transition: all 0.2s ease-in-out;
   cursor: pointer;
 
 }
@@ -297,10 +296,16 @@ h2 {
 }
 
 .faq-answer {
-  padding-top: 2rem;
+  height: 0;
+  font-size: 0;
+  transition: all 0.2s ease-in-out;
+  color: var(--clr-primary);
 }
 
-.hidden {
-  display: none;
+.expand {
+  color: var(--clr-text);
+  font-size: 1rem;
+  padding-top: 2rem;
+  height: 100%;
 }
 

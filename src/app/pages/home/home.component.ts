@@ -5,19 +5,22 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {
+  faqOpen: boolean[] = [];
 
-  faqQuestions = document.querySelectorAll(".faq");
-  faqAnswers = document.querySelectorAll(".faq-a");
-  faqIcons = document.querySelectorAll(".faq-icon");
+  constructor() {
+    this.initializeFAQ();
+  }
 
-// faqQuestions.forEach((faqQuestion, index) => {
-//   faqQuestion.addEventListener('click', () => {
-//     faqIcons[index].classList.toggle("expand");
-//     faqAnswers[index].classList.toggle("expand");
-//   });
-// });
+  initializeFAQ() {
+    for (let i = 1; i <= 5; i++) {
+      this.faqOpen[i] = false;
+    }
+  }
 
+  toggleFAQ(index: number) {
+    this.faqOpen[index] = !this.faqOpen[index];
+  }
 }
