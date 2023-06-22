@@ -58,3 +58,31 @@ main {
   min-height: calc(100vh - 8rem);
 }
 
+a {
+  text-decoration: none;
+  color: var(--clr-primary);
+  font-weight: 700;
+}
+
+a:hover {
+  text-decoration: underline var(--clr-text);
+}
+
+.btn {
+  font-size: 1.5rem;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  border: none;
+  background-color: var(--clr-primary);
+  color: var(--clr-text);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+  background-color: var(--clr-text);
+  color: var(--clr-secondary);
+  transform: scale(1.1);
+  box-shadow: 0 0.5rem 1rem var(--clr-text);
+}
+

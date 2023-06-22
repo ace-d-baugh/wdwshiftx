@@ -54,24 +54,6 @@ h6 {
   margin-left: 3rem;
 }
 
-.hero-section-CTA .btn {
-  font-size: 1.5rem;
-  padding: 1rem 2rem;
-  border-radius: 0.5rem;
-  border: none;
-  background-color: var(--clr-primary);
-  color: var(--clr-text);
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-}
-
-.hero-section-text .btn:hover {
-  background-color: var(--clr-text);
-  color: var(--clr-secondary);
-  transform: scale(1.1);
-  box-shadow: 0 0.5rem 1rem var(--clr-text);
-}
-
 .hero-section-image {
   flex: 1;
   display: flex;
@@ -100,6 +82,7 @@ h6 {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 2rem;
 }
 
 .pain-section-image h3 {
@@ -256,8 +239,7 @@ h2 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 3rem;
-  width: clamp(20rem, 1200px, 1200px);
+  width: clamp(400px, 80vw, 1200px);
 }
 
 .faq {
@@ -265,7 +247,7 @@ h2 {
   flex-direction: column;
   margin-bottom: 1rem;
   width: 100%;
-  background-color: var(--clr-primary);
+  background-color: var(--clr-secondary);
   display: flex;
   justify-content: space-between;
   padding: 1rem;
@@ -288,7 +270,7 @@ h2 {
   font-weight: 700;
   margin-right: 1rem;
   color: var(--clr-accent);
-  transition: all 0.2s ease-in-out;
+  transition: all .5s ease-in;
 }
 
 .faq-rotate {
@@ -307,5 +289,15 @@ h2 {
   font-size: 1rem;
   padding-top: 2rem;
   height: 100%;
+}
+
+.call-to-action-section {
+  margin: 3rem 0;
+  text-align: center;
+}
+
+.call-to-action-section p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
 }
 
