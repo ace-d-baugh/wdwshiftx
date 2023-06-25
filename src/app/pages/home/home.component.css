@@ -182,7 +182,6 @@ h2 {
 
 .testimonial-card:hover {
   scale: 1.1;
-
 }
 
 .testimonial-card img {
@@ -195,6 +194,14 @@ h2 {
 .testimonial-card p {
   font-size: 1.5rem;
   width: 24ch;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.testimonial-name {
+  font-weight: 700;
+  width: 100%;
+  text-align: right;
 }
 
 .features-section {
@@ -299,5 +306,97 @@ h2 {
 .call-to-action-section p {
   font-size: 1.5rem;
   margin-bottom: 2rem;
+}
+
+/* Media Queries */
+/* Mobile */
+@media (max-width: 796px) {
+  .hero-section {
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .hero-section-text {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .hero-section-text h1 {
+    font-size: 3rem;
+  }
+
+  .hero-section-text p {
+    font-size: 1.5rem;
+  }
+
+  .pain-section {
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .pain-section-text h2 {
+    text-align: center;
+    font-size: 2rem;
+  }
+
+  .pain-section-text ul {
+    margin: 1rem 0;
+  }
+
+  .pain-section-text ul li {
+    margin-left: 1rem;
+  }
+
+  .benefits-section {
+    padding: 2rem;
+  }
+
+  .benefits {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .benefit {
+    margin: 1rem 0;
+  }
+
+  .benefit-text {
+    width: 100%;
+  }
+
+  .testimonials-section {
+    padding: 2rem;
+  }
+
+  .testimonials {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .testimonial-card {
+    margin: 1rem 0;
+  }
+
+  .features-section {
+    padding: 2rem;
+  }
+
+  .features {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .features-left,
+  .features-right {
+    padding: 0 1rem;
+  }
+
+  .call-to-action-section {
+    padding: 2rem;
+  }
 }
 
