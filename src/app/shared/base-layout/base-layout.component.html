@@ -1,5 +1,5 @@
 <header>
-  <div class="logo">
+  <div class="logo" routerLink="/home">
     <span id="let1" [ngStyle]="{ color: colorLetterW1 }">W</span>
     <span id="let2" [ngStyle]="{ color: colorLetterD }">D</span>
     <span id="let3" [ngStyle]="{ color: colorLetterW2 }">W</span>
@@ -150,7 +150,7 @@
     <a routerLink="/shifts" class="nav-link">
       <img src="/assets/images/Search-Icon-Reg.png" alt="Search Icon"><span class="full">Find</span>
     </a>
-    <a routerLink="/shifts" class="nav-link">
+    <a routerLink="/shifts/new-shift" class="nav-link">
       <img src="/assets/images/Cal-Icon-RP.png" alt="Post Icon"><span class="full">Post</span>
     </a>
     <button routerLink="/signin" class="btn">Get Started</button>
