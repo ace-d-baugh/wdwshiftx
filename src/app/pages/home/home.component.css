@@ -1,13 +1,3 @@
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--ff-accent);
-  font-weight: 700;
-}
-
 .hero-section {
   display: flex;
   flex-direction: row;
@@ -162,7 +152,7 @@ h2 {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-items: start;
+  align-items: flex-start;
   justify-content: space-around;
 }
 
@@ -353,32 +343,6 @@ h2 {
 
   .benefits-section {
     padding: 2rem;
-  }
-
-  .benefits {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .benefit {
-    margin: 1rem 0;
-  }
-
-  .benefit-text {
-    width: 100%;
-  }
-
-  .testimonials-section {
-    padding: 2rem;
-  }
-
-  .testimonials {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .testimonial-card {
-    margin: 1rem 0;
   }
 
   .features-section {
