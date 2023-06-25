@@ -7,6 +7,10 @@ header {
   z-index: 100;
 }
 
+.logo a {
+  text-decoration: none;
+}
+
 .logo span {
   font-size: 3rem;
   font-style: italic;
