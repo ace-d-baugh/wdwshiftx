@@ -1,0 +1,25 @@
+.contact-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+}
+
+
+.contact-content h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.contact-content p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.contact-content ul {
+  margin: 1rem;
+}
+
+.contact-content ul li {
+  margin-left: 1rem;
+}
