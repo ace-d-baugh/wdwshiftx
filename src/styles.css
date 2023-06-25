@@ -96,8 +96,20 @@ a:hover {
   box-shadow: 0 0.5rem 1rem var(--clr-text);
 }
 
+.mobile-btn {
+  display: none;
+}
+
 @media (max-width: 796px) {
   .btn {
     font-size: 1rem;
+  }
+
+  .mobile {
+    display: block;
+  }
+
+  .full {
+    display: none;
   }
 }

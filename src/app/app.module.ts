@@ -24,9 +24,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 // Import components
 import { BaseLayoutComponent } from './shared/base-layout/base-layout.component';
 import { HomeComponent } from './pages/home/home.component';
+import { AboutComponent } from './pages/about/about.component';
+import { ContactComponent } from './pages/contact/contact.component';
+import { TermsComponent } from './pages/terms/terms.component';
+import { PrivacyComponent } from './pages/privacy/privacy.component';
 
 @NgModule({
-  declarations: [AppComponent, BaseLayoutComponent, HomeComponent],
+  declarations: [AppComponent, BaseLayoutComponent, HomeComponent, AboutComponent, ContactComponent, TermsComponent, PrivacyComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

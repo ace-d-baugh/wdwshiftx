@@ -1,0 +1,29 @@
+.privacy-content {
+  padding: 2rem;
+}
+
+ol li ol {
+  list-style-type: lower-alpha;
+}
+
+ol li {
+  margin-left: 1rem;
+}
+
+p {
+  font-size: 1rem;
+  margin: 1rem 0;
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1rem 0;
+}
+
+h3 {
+  font-size: 1.25rem;
+  margin: 1rem 0;
+}
+
+
+

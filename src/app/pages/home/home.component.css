@@ -120,6 +120,7 @@ h2 {
   flex-direction: column;
   align-items: center;
   text-align: center;
+  margin-bottom: 2rem;
 }
 
 .benefit-icon {
@@ -131,10 +132,11 @@ h2 {
 
 .benefit-title {
   font-size: 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: .5rem;
 }
 
 .benefit-text {
+  margin-top: .5rem;
   font-size: 1.5rem;
   width: 24ch;
 }
