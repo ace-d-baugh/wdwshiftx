@@ -1,3 +1,12 @@
+/*
+=====================================================
+; File Name: home.component.css
+; Author: Ace Baugh
+; Date: 06/25/2023
+; File Description: These are the styles for the home component
+=====================================================
+*/
+
 .hero-section {
   display: flex;
   flex-direction: row;

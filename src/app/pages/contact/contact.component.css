@@ -1,3 +1,12 @@
+/*
+=====================================================
+; File Name: contact.component.css
+; Author: Ace Baugh
+; Date: 06/25/2023
+; File Description: These are the styles for the contact component
+=====================================================
+*/
+
 .contact-content {
   display: flex;
   flex-direction: column;

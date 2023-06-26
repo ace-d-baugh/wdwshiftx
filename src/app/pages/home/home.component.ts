@@ -1,6 +1,14 @@
+/*
+=====================================================
+; File Name: home.component.ts
+; Author: Ace Baugh
+; Date: 06/25/2023
+; File Description: This is the typeScript file for the home component
+=====================================================
+*/
+
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-
 
 @Component({
   selector: 'app-home',

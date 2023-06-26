@@ -1,3 +1,12 @@
+/*
+=====================================================
+; File Name: base-layout.component.ts
+; Author: Ace Baugh
+; Date: 06/25/2023
+; File Description: This is the typeScript file for the base layout component
+=====================================================
+*/
+
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -233,7 +242,6 @@ export class BaseLayoutComponent {
     this.colorLetterXTop = 'blue';
   }
 
-
   // Function to find out if today is the last Monday of May
   // aka Memorial Day
   // isMemorial(this.todaysDate) {
@@ -251,5 +259,4 @@ export class BaseLayoutComponent {
   //     return true;
   //   }
   // }
-
 }
