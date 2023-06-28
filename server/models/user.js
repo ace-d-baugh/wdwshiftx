@@ -14,8 +14,8 @@ const Schema = mongoose.Schema;
 //userSchema model for adding users to db.
 const userSchema = new Schema(
   {
-    email: { type: String, unique: true, required: true },
-    password: { type: String, unique: true, required: true },
+    email: { type: String, unique: true, required: true }, // This is the username
+    password: { type: String, unique: true, required: true }, 
     firstName: { type: String, unique: true, required: true },
     lastName: { type: String, unique: true, required: true },
     phone: { type: String, unique: true, required: true },
