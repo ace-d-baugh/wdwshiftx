@@ -11,23 +11,21 @@ const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
 
-const swaggerJsDoc = require("swagger-jsdoc");
-const swaggerUi = require("swagger-ui-express");
 
-const UserRoute = require("./routes/user-api");
-const Session = require("./routes/session-api");
-const Ranks = require("./routes/rank-api");
-const Invoice = require("./routes/invoice-api");
+//const UserRoute = require("./routes/user-api");
+//const Session = require("./routes/session-api");
+//const Ranks = require("./routes/rank-api");
+//const Invoice = require("./routes/invoice-api");
 
 const app = express(); // Express variable.
 
 /**
  * App configurations.
  */
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "../dist/wdwshiftx")));
-app.use("/", express.static(path.join(__dirname, "../dist/wdwshiftx")));
+//app.use(express.json());
+//app.use(express.urlencoded({ extended: true }));
+//app.use(express.static(path.join(__dirname, "../dist/wdwshiftx")));
+//app.use("/", express.static(path.join(__dirname, "../dist/wdwshiftx")));
 
 // default server port value.
 const PORT = process.env.PORT || 3000;
@@ -47,23 +45,6 @@ mongoose
     console.log("MongoDB Error: " + err.message);
   });
 
-// Swagger API documentation options.
-const options = {
-  definition: {
-    openapi: "3.0.0",
-    info: {
-      title: "BCRS API's",
-      version: "1.0.0",
-    },
-  },
-  apis: ["./server/routes/*.js"],
-};
-
-// Swagger specific options
-const openapiSpecification = swaggerJsDoc(options);
-
-// Swagger UI
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(openapiSpecification));
 
 // API routes.
 //app.use("/api/users", UserRoute);

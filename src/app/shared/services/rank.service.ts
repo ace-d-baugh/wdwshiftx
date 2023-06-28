@@ -50,7 +50,7 @@ export class RankService {
     return this.http.delete(`/api/rank/${rankId}`);
   }
 
-  //fund user rank
+  //find user rank
   findUserRank(username: string): Observable<any> {
     return this.http.get(`/api/users/${username}/rank`).pipe(
       map((res) => {
