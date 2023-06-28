@@ -19,6 +19,12 @@ const mongoose = require("mongoose");
 
 const app = express(); // Express variable.
 
+const rankSchema = new mongoose.Schema({
+  rank: { type: String, unique: true },
+  isDisabled: { type: Boolean, default: false },
+});
+const Rank = mongoose.model("Rank", rankSchema);
+
 /**
  * App configurations.
  */
@@ -40,6 +46,10 @@ mongoose
   .connect(CONN)
   .then(() => {
     console.log("Connection to the database was successful");
+    // list the ranks in the ranks collection.
+    Rank.find({}).then((data) => {
+      console.log(data);
+    });
   })
   .catch((err) => {
     console.log("MongoDB Error: " + err.message);

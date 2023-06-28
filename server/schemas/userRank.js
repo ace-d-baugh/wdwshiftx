@@ -13,7 +13,7 @@ const Schema = mongoose.Schema;
 
 // user role schema
 let userRankSchema = new Schema({
-  text: { type: String, default: "guest" },
+  rank: { type: String, default: "guest" },
 });
 
 module.exports = userRankSchema;
