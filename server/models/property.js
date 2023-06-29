@@ -16,6 +16,10 @@ const propertySchema = new Schema(
   {
     property: { type: String, unique: true },
     isDisabled: { type: Boolean, default: false },
+    createdBy: { type: String },
+    modifiedBy: { type: String },
+    createdDate: { type: Date, default: Date.now },
+    modifiedDate: { type: Date },
   },
   { collection: "properties" }
 );

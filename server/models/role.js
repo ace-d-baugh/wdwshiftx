@@ -16,6 +16,10 @@ const roleSchema = new Schema(
   {
     role: { type: String, unique: true },
     isDisabled: { type: Boolean, default: false },
+    createdBy: { type: String },
+    modifiedBy: { type: String },
+    createdDate: { type: Date, default: Date.now },
+    modifiedDate: { type: Date },
   },
   { collection: "roles" }
 );
