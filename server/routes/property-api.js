@@ -1,69 +1,69 @@
 /*
 =====================================================
-; File Name: rank-api.js
+; File Name: property-api.js
 ; Author: Ace Baugh
 ; Date: 06/28/2023
-; File Description: Rank API
+; File Description: Property API
 =====================================================
 */
 
 const express = require("express");
-const Rank = require("../models/rank");
+const Property = require("../models/property");
 const Ajv = require("ajv");
 const bcrypt = require("bcryptjs");
 const saltRounds = 10;
 
-//Data validation schema for createRank api.
-const createRankSchema = {
+//Data validation schema for createProperty api.
+const createPropertySchema = {
   type: "object",
   properties: {
-    rank: {
+    property: {
       type: "string",
     },
   },
-  required: ["rank"],
+  required: ["property"],
   additionalProperties: false,
 };
 
-//Data validation schema for updateRank api.
-const updateRankSchema = {
+//Data validation schema for updateProperty api.
+const updatePropertySchema = {
   type: "object",
   properties: {
-    rank: {
+    property: {
       type: "string",
     },
   },
-  required: ["rank"],
+  required: ["property"],
   additionalProperties: false,
 };
 
 /*
 =====================================================
-; Find All Ranks
+; Find All Properties
 =====================================================
 */
 
 /*
 =====================================================
-; Find Rank by id
+; Find Property by id
 =====================================================
 */
 
 /*
 =====================================================
-; Create Rank
+; Create Property
 =====================================================
 */
 
 /*
 =====================================================
-; Update Rank
+; Update Property
 =====================================================
 */
 
 /*
 =====================================================
-; Delete Rank (Disable)
+; Delete Property (Disable)
 =====================================================
 */
 
