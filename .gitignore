@@ -40,3 +40,10 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Mongo Connection
+.env
+
+# API call logs
+server/logs/debug.log
+server/logs/error.log

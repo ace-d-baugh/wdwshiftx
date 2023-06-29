@@ -10,6 +10,7 @@
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
 
 
 //const UserRoute = require("./routes/user-api");
@@ -18,6 +19,8 @@ const mongoose = require("mongoose");
 //const Invoice = require("./routes/invoice-api");
 
 const app = express(); // Express variable.
+
+dotenv.config(); // dotenv config function
 
 /*
 -----------------------------------------------------
@@ -47,8 +50,7 @@ const Rank = mongoose.model("Rank", rankSchema);
 // default server port value.
 const PORT = process.env.PORT || 3000;
 
-const CONN =
-  "mongodb+srv://shiftx_admin:WDWSh!ftXS3cret@wdwshiftx.8ey3dwj.mongodb.net/WDWShiftX?retryWrites=true&w=majority";
+const CONN = process.env.MONGO_CONN;
 
 /**
  * Database connection.
