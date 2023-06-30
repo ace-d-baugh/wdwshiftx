@@ -23,12 +23,14 @@ const getDateTime = () => {
 module.exports.debugLogger = (data) => {
   const logString = `[${getDateTime()}] server\t ${data.filename} - ${data.message} - ${data.item}\n`
   appendFileSync(debugLog, logString)
+  console.log(logString)
 }
 
 // Errors are logged to the error.log
 module.exports.errorLogger = (data) => {
   const logString = `[${getDateTime()}] server\t ${data.filename} - ${data.message} - ${data.item}\n`
   appendFileSync(errorLog, logString)
+  console.log(logString)
 }
 
 // Allows us to store server responses
@@ -43,7 +45,7 @@ class ServerResponse {
       httpCode: this.httpCode,
       message: this.message,
       data: this.data,
-      timestamp: new Date().toLocaleString('en-US')
+      timestamp: getDateTime()
     }
   }
 }
