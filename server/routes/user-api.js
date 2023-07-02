@@ -121,10 +121,10 @@ router.get("/", async (req, res) => {
     User.find({})
       .where("isDisabled")
       .equals(false)
-      .then(function (err, users) {
-
+      .then((users) => {
+/*
         // 404 error if null values
-        if (users === null) {
+        if (null) {
           const response = nullResponse(err);
           res.status(404).send(response.toObject());
           return;
@@ -136,18 +136,22 @@ router.get("/", async (req, res) => {
           res.status(500).send(response.toObject());
           return;
         }
-
+*/
         if (users) {
           // Successful Query
           const response = successResponse(users);
           res.json(response.toObject());
         }
-      });
+      }).catch((err) => {
+        const response = serverErrorResponse(err);
+          res.status(500).send(response.toObject());
+          return;
+      })
 
     // Server Error
   } catch (e) {
     const response = serverErrorResponse(e.message)
-    res.status(50).send(response.toObject());
+    res.status(500).send(response.toObject());
   }
 });
 
