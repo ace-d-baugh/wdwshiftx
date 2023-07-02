@@ -22,22 +22,6 @@ const app = express(); // Express variable.
 
 dotenv.config(); // dotenv config function
 
-/*
------------------------------------------------------
-; This is just here to test the connection to the db.
------------------------------------------------------
-*/
-const userSchema = new mongoose.Schema({
-  user: { type: String, unique: true },
-  isDisabled: { type: Boolean, default: false },
-});
-const User = mongoose.model("User", userSchema);
-/*
------------------------------------------------------
-; This is the end of the test.
------------------------------------------------------
-*/
-
 
 /**
  * App configurations.
