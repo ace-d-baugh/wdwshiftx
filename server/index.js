@@ -13,7 +13,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 
 
-//const UserRoute = require("./routes/user-api");
+const UserRoute = require("./routes/user-api");
 //const Session = require("./routes/session-api");
 //const Ranks = require("./routes/rank-api");
 //const Invoice = require("./routes/invoice-api");
@@ -26,7 +26,7 @@ dotenv.config(); // dotenv config function
 -----------------------------------------------------
 ; This is just here to test the connection to the db.
 -----------------------------------------------------
-*/
+
 const userSchema = new mongoose.Schema({
   user: { type: String, unique: true },
   isDisabled: { type: Boolean, default: false },
@@ -71,7 +71,7 @@ mongoose
 
 
 // API routes.
-//app.use("/api/users", UserRoute);
+app.use("/api/users", UserRoute);
 //app.use("/api/session", Session);
 //app.use("/api/rank", Ranks);
 
