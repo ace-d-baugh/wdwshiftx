@@ -13,7 +13,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 
 
-//const UserRoute = require("./routes/user-api");
+const UserRoute = require("./routes/user-api");
 //const Session = require("./routes/session-api");
 //const Ranks = require("./routes/rank-api");
 //const Invoice = require("./routes/invoice-api");
@@ -21,22 +21,6 @@ const dotenv = require("dotenv");
 const app = express(); // Express variable.
 
 dotenv.config(); // dotenv config function
-
-/*
------------------------------------------------------
-; This is just here to test the connection to the db.
------------------------------------------------------
-*/
-const userSchema = new mongoose.Schema({
-  user: { type: String, unique: true },
-  isDisabled: { type: Boolean, default: false },
-});
-const User = mongoose.model("User", userSchema);
-/*
------------------------------------------------------
-; This is the end of the test.
------------------------------------------------------
-*/
 
 
 /**
@@ -60,10 +44,6 @@ mongoose
   .then(() => {
     console.log("Connection to the database was successful");
 
-    // list the ranks in the ranks collection.
-    User.find({}).then((data) => {
-      console.log(data);
-    });
   })
   .catch((err) => {
     console.log("MongoDB Error: " + err.message);
@@ -71,7 +51,7 @@ mongoose
 
 
 // API routes.
-//app.use("/api/users", UserRoute);
+app.use("/api/users", UserRoute);
 //app.use("/api/session", Session);
 //app.use("/api/rank", Ranks);
 
