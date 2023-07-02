@@ -122,33 +122,20 @@ router.get("/", async (req, res) => {
       .where("isDisabled")
       .equals(false)
       .then((users) => {
-/*
-        // 404 error if null values
-        if (null) {
-          const response = nullResponse(err);
-          res.status(404).send(response.toObject());
-          return;
-        }
 
-        // Server Error
-        if (err) {
-          const response = serverErrorResponse(err);
-          res.status(500).send(response.toObject());
-          return;
-        }
-*/
+        // Successful Query
         if (users) {
-          // Successful Query
           const response = successResponse(users);
           res.json(response.toObject());
         }
+
+      // Server Error
       }).catch((err) => {
         const response = serverErrorResponse(err);
-          res.status(500).send(response.toObject());
-          return;
+        res.status(500).send(response.toObject());
       })
 
-    // Server Error
+    // Internal Server Error
   } catch (e) {
     const response = serverErrorResponse(e.message)
     res.status(500).send(response.toObject());
