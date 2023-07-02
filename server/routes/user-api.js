@@ -16,7 +16,7 @@ const {
 const ServerResponse = require("../logs/server-response");
 const Ajv = require("ajv");
 const bcrypt = require("bcryptjs");
-//const Rank = require("../models/rank");
+const Rank = require("../models/rank");
 const saltRounds = 10;
 const fileName = "user-api.js";
 
@@ -149,6 +149,37 @@ router.get("/", async (req, res) => {
 =====================================================
 */
 
+router.get("/:id", async (req, res) => {
+  try {
+    User.findById(req.params.id)
+      .where("isDisabled")
+      .equals(false)
+      .then((user) => {
+
+        // Successful Query
+        if (user) {
+          const response = successResponse(user);
+          res.json(response.toObject());
+        }
+
+        // Null Response
+        else {
+          const response = nullResponse(user);
+          res.status(404).send(response.toObject());
+        }
+
+      // Server Error
+      }).catch((err) => {
+        const response = serverErrorResponse(err);
+        res.status(500).send(response.toObject());
+      })
+
+    // Internal Server Error
+  } catch (e) {
+    const response = serverErrorResponse(e.message)
+    res.status(501).send(response.toObject());
+  }
+});
 
 /*
 =====================================================
