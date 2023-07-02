@@ -138,7 +138,7 @@ router.get("/", async (req, res) => {
     // Internal Server Error
   } catch (e) {
     const response = serverErrorResponse(e.message)
-    res.status(500).send(response.toObject());
+    res.status(501).send(response.toObject());
   }
 });
 
