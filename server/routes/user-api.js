@@ -9,14 +9,17 @@
 
 const express = require("express");
 const User = require("../models/user");
+const router = express.Router();
 const {
-  debugLogger, errorLogger, ServerResponse
-} = require("../logs/server-response");
+  debugLogger, errorLogger
+ } = require("../logs/logger");
+const ServerResponse = require("../logs/server-response");
 const Ajv = require("ajv");
 const bcrypt = require("bcryptjs");
-const Rank = require("../models/rank");
+//const Rank = require("../models/rank");
 const saltRounds = 10;
 const fileName = "user-api.js";
+
 
 /*
 =====================================================
@@ -36,6 +39,7 @@ function successResponse(responseData) {
     "Query Successful",
     responseData
   );
+  return response
 }
 
 // Null Response
@@ -50,6 +54,7 @@ function nullResponse(responseData) {
     "Object or Path not found",
     responseData
   );
+  return response
 }
 
 // Server Error Response
@@ -64,6 +69,7 @@ function serverErrorResponse(responseData) {
     "Server Error",
     responseData
   );
+  return response
 }
 
 // Validation Error Response
@@ -78,6 +84,7 @@ function validationErrorResponse(responseData) {
     "Unable to validate data",
     responseData
   );
+  return response
 }
 
 //Data validation schema for updateUser api.
@@ -114,31 +121,33 @@ router.get("/", async (req, res) => {
     User.find({})
       .where("isDisabled")
       .equals(false)
-      .exec(function (err, users) {
+      .then(function (err, users) {
 
         // 404 error if null values
         if (users === null) {
-          nullResponse(err);
+          const response = nullResponse(err);
           res.status(404).send(response.toObject());
           return;
         }
 
         // Server Error
         if (err) {
-          serverErrorResponse(err);
+          const response = serverErrorResponse(err);
           res.status(500).send(response.toObject());
           return;
         }
 
-        // Successful Query
-        successResponse(users);
-        res.json(response.toObject());
+        if (users) {
+          // Successful Query
+          const response = successResponse(users);
+          res.json(response.toObject());
+        }
       });
 
     // Server Error
   } catch (e) {
-    serverErrorResponse(e.message)
-    res.status(500).send(response.toObject());
+    const response = serverErrorResponse(e.message)
+    res.status(50).send(response.toObject());
   }
 });
 

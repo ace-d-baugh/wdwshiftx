@@ -13,7 +13,7 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 
 
-//const UserRoute = require("./routes/user-api");
+const UserRoute = require("./routes/user-api");
 //const Session = require("./routes/session-api");
 //const Ranks = require("./routes/rank-api");
 //const Invoice = require("./routes/invoice-api");
@@ -42,10 +42,10 @@ const Rank = mongoose.model("Rank", rankSchema);
 /**
  * App configurations.
  */
-//app.use(express.json());
-//app.use(express.urlencoded({ extended: true }));
-//app.use(express.static(path.join(__dirname, "../dist/wdwshiftx")));
-//app.use("/", express.static(path.join(__dirname, "../dist/wdwshiftx")));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, "../dist/wdwshiftx")));
+app.use("/", express.static(path.join(__dirname, "../dist/wdwshiftx")));
 
 // default server port value.
 const PORT = process.env.PORT || 3000;
@@ -71,7 +71,7 @@ mongoose
 
 
 // API routes.
-//app.use("/api/users", UserRoute);
+app.use("/api/users", UserRoute);
 //app.use("/api/session", Session);
 //app.use("/api/rank", Ranks);
 
