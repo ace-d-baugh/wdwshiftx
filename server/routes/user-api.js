@@ -41,6 +41,7 @@ const updateUserSchema = {
   additionalProperties: false,
 };
 
+
 /*
 =====================================================
 ; Find All Users
@@ -55,13 +56,12 @@ router.get("/", async (req, res) => {
       .then((users) => {
 
         // Successful Query
-        if (users) {
-          const response = success(apiCall, users);
-          res.json(response.toObject());
-        }
+        const response = success(apiCall, users);
+        res.json(response.toObject());
+      })
 
       // Server Error
-      }).catch((err) => {
+      .catch((err) => {
         const response = serverError(apiCall, err);
         res.status(500).send(response.toObject());
       })
@@ -79,7 +79,6 @@ router.get("/", async (req, res) => {
 ; Find User by id
 =====================================================
 */
-
 router.get("/:id", async (req, res) => {
   const apiCall = "findUserById";
   try {
@@ -87,25 +86,17 @@ router.get("/:id", async (req, res) => {
       .then((user) => {
 
         // Successful Query
-        if (user) {
-          const response = success(apiCall, user);
-          res.json(response.toObject());
-        }
-
-        /* This null response will never trigger */
-        // Null Response
-        else {
-          const response = nullError(apiCall, user);
-          res.status(404).send(response.toObject());
-        }
-
-      // Server Error
-      }).catch((err) => {
-        const response = serverError(apiCall, err);
-        res.status(500).send(response.toObject());
+        const response = success(apiCall, user);
+        res.json(response.toObject());
       })
 
-    // Internal Server Error
+      // Not Found Error
+      .catch((err) => {
+        const response = nullError(apiCall, err);
+        res.status(404).send(response.toObject());
+      })
+
+    // MongoDB Error
   } catch (e) {
     const response = serverError(apiCall, e.message)
     res.status(501).send(response.toObject());

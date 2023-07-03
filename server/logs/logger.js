@@ -31,6 +31,6 @@ module.exports.debugLogger = (data) => {
 module.exports.errorLogger = (data) => {
   const logString = `[${getDateTime()}] - ${data.apiCall} - ${data.message} - \n${data.item}\n\n`
   appendFileSync(errorLog, logString)
-  console.log(`\n ${data.message}`)
-  console.log(data.item)
+  console.error(`\n ${data.message}`)
+  console.error(data.item)
 }
