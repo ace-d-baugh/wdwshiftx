@@ -1,3 +1,10 @@
+/**
+ * Title: logger.js
+ * Author: Walter McCue
+ * Date: 06/29/23
+ * Description: Logging functions
+*/
+
 // Require statements
 const { appendFileSync } =require('fs');
 const { join } = require('path');
@@ -14,14 +21,16 @@ const getDateTime = () => {
 
 // Successful operations are logged to the debug.log
 module.exports.debugLogger = (data) => {
-  const logString = `[${getDateTime()}] server\t ${data.filename} - ${data.message} - ${data.item}\n`
+  const logString = `[${getDateTime()}] - ${data.apiCall} - ${data.message} - \n${data.item}\n\n`
   appendFileSync(debugLog, logString)
-  console.log(logString)
+  console.log(`\n ${data.message}`)
+  console.log(data.item)
 }
 
 // Errors are logged to the error.log
 module.exports.errorLogger = (data) => {
-  const logString = `[${getDateTime()}] server\t ${data.filename} - ${data.message} - ${data.item}\n`
+  const logString = `[${getDateTime()}] - ${data.apiCall} - ${data.message} - \n${data.item}\n\n`
   appendFileSync(errorLog, logString)
-  console.log(logString)
+  console.log(`\n ${data.message}`)
+  console.log(data.item)
 }

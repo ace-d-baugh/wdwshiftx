@@ -2,7 +2,7 @@
  * Title: server-response.js
  * Author: Walter McCue
  * Date: 06/29/23
- * Description: Server response and logging functions
+ * Description: Server responses
 */
 
 const getDateTime = () => {
