@@ -81,33 +81,33 @@ router.get("/", async (req, res) => {
 */
 
 router.get("/:id", async (req, res) => {
+  const apiCall = "findUserById";
   try {
     User.findById(req.params.id)
-      .where("isDisabled")
-      .equals(false)
       .then((user) => {
 
         // Successful Query
         if (user) {
-          const response = successResponse(user);
+          const response = success(apiCall, user);
           res.json(response.toObject());
         }
 
+        /* This null response will never trigger */
         // Null Response
         else {
-          const response = nullResponse(user);
+          const response = nullError(apiCall, user);
           res.status(404).send(response.toObject());
         }
 
       // Server Error
       }).catch((err) => {
-        const response = serverErrorResponse(err);
+        const response = serverError(apiCall, err);
         res.status(500).send(response.toObject());
       })
 
     // Internal Server Error
   } catch (e) {
-    const response = serverErrorResponse(e.message)
+    const response = serverError(apiCall, e.message)
     res.status(501).send(response.toObject());
   }
 });
