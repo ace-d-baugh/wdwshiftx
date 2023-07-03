@@ -104,7 +104,12 @@ const updateUserSchema = {
       type: "string",
     },
     rank: {
-      type: "string",
+      type: "object",
+      properties: {
+        rank: {
+          type: "string",
+        }
+      },
     },
   },
   required: ["email","firstName", "lastName", "phone", "rank"],
@@ -193,6 +198,45 @@ router.get("/:id", async (req, res) => {
 ; Delete User (Disable)
 =====================================================
 */
+router.post("/delete/:id", async (req, res) => {
+  try {
+    User.findById(req.params.id)
+      .where("isDisabled")
+      .equals(false)
+      .then((user) => {
+
+        // Successful Query
+        if (user) {
+          user.isDisabled = true;
+          user.save()
+            .then((user) => {
+              const response = successResponse(user);
+              res.json(response.toObject());
+            })
+            .catch((err) => {
+              const response = serverErrorResponse(err);
+              res.status(500).send(response.toObject());
+            })
+        }
+
+        // Null Response
+        else {
+          const response = nullResponse(user);
+          res.status(404).send(response.toObject());
+        }
+
+      // Server Error
+      }).catch((err) => {
+        const response = serverErrorResponse(err);
+        res.status(500).send(response.toObject());
+      })
+
+    // Internal Server Error
+  } catch (e) {
+    const response = serverErrorResponse(e.message)
+    res.status(501).send(response.toObject());
+  }
+});
 
 
 /*
@@ -208,6 +252,44 @@ router.get("/:id", async (req, res) => {
 =====================================================
 */
 
+router.get("/rank/:id", async (req, res) => {
+  try {
+    User.findById(req.params.id)
+      .where("isDisabled")
+      .equals(false)
+      .then((user) => {
+
+        // Successful Query
+        if (user) {
+          Rank.findById(user.rank)
+            .then((rank) => {
+              const response = successResponse(rank);
+              res.json(response.toObject());
+            })
+            .catch((err) => {
+              const response = serverErrorResponse(err);
+              res.status(500).send(response.toObject());
+            })
+        }
+
+        // Null Response
+        else {
+          const response = nullResponse(user);
+          res.status(404).send(response.toObject());
+        }
+
+      // Server Error
+      }).catch((err) => {
+        const response = serverErrorResponse(err);
+        res.status(500).send(response.toObject());
+      })
+
+    // Internal Server Error
+  } catch (e) {
+    const response = serverErrorResponse(e.message)
+    res.status(501).send(response.toObject());
+  }
+});
 
 /*
 =====================================================
