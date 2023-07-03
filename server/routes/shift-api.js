@@ -8,10 +8,16 @@
 */
 
 const express = require("express");
-const Shift = require("../models/shift");
+const router = express.Router();
 const Ajv = require("ajv");
-const bcrypt = require("bcryptjs");
-const saltRounds = 10;
+const ajv = new Ajv();
+const Shift = require("../models/shift");
+const {
+  success,
+  nullError,
+  serverError,
+  validationError
+} = require("../logs/api-functions");
 
 //Data validation schema for createShift api.
 const createShiftSchema = {

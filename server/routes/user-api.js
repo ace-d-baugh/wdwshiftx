@@ -8,84 +8,18 @@
 */
 
 const express = require("express");
-const User = require("../models/user");
 const router = express.Router();
-const {
-  debugLogger, errorLogger
- } = require("../logs/logger");
-const ServerResponse = require("../logs/server-response");
 const Ajv = require("ajv");
-const bcrypt = require("bcryptjs");
+const ajv = new Ajv();
+const User = require("../models/user");
 const Rank = require("../models/rank");
-const saltRounds = 10;
-const fileName = "user-api.js";
+const {
+  success,
+  nullError,
+  serverError,
+  validationError
+} = require("../logs/api-functions");
 
-
-/*
-=====================================================
-; Server Responses
-=====================================================
-*/
-
-// Success Response
-function successResponse(responseData) {
-  debugLogger({
-    filename: fileName,
-    message: "Successful Query",
-    item: responseData
-  });
-  const response = new ServerResponse(
-    200,
-    "Query Successful",
-    responseData
-  );
-  return response
-}
-
-// Null Response
-function nullResponse(responseData) {
-  errorLogger({
-    filename: fileName,
-    message: "Object or Path not found",
-    item: responseData
-  });
-  const response = new ServerResponse(
-    404,
-    "Object or Path not found",
-    responseData
-  );
-  return response
-}
-
-// Server Error Response
-function serverErrorResponse(responseData) {
-  errorLogger({
-    filename: fileName,
-    message: "Server Error",
-    item: responseData
-  });
-  const response = new ServerResponse(
-    500,
-    "Server Error",
-    responseData
-  );
-  return response
-}
-
-// Validation Error Response
-function validationErrorResponse(responseData) {
-  errorLogger({
-    filename: fileName,
-    message: "Unable to validate data",
-    item: responseData
-  });
-  const response = new ServerResponse(
-    400,
-    "Unable to validate data",
-    responseData
-  );
-  return response
-}
 
 //Data validation schema for updateUser api.
 const updateUserSchema = {
@@ -116,12 +50,14 @@ const updateUserSchema = {
   additionalProperties: false,
 };
 
+
 /*
 =====================================================
 ; Find All Users
 =====================================================
 */
 router.get("/", async (req, res) => {
+  const apiCall = "findAllUsers";
   try {
     User.find({})
       .where("isDisabled")
@@ -129,20 +65,19 @@ router.get("/", async (req, res) => {
       .then((users) => {
 
         // Successful Query
-        if (users) {
-          const response = successResponse(users);
-          res.json(response.toObject());
-        }
+        const response = success(apiCall, users);
+        res.json(response.toObject());
+      })
 
       // Server Error
-      }).catch((err) => {
-        const response = serverErrorResponse(err);
+      .catch((err) => {
+        const response = serverError(apiCall, err);
         res.status(500).send(response.toObject());
       })
 
-    // Internal Server Error
+    // MongoDB Error
   } catch (e) {
-    const response = serverErrorResponse(e.message)
+    const response = serverError(apiCall, e.message)
     res.status(501).send(response.toObject());
   }
 });
@@ -153,35 +88,26 @@ router.get("/", async (req, res) => {
 ; Find User by id
 =====================================================
 */
-
 router.get("/:id", async (req, res) => {
+  const apiCall = "findUserById";
   try {
     User.findById(req.params.id)
-      .where("isDisabled")
-      .equals(false)
       .then((user) => {
 
         // Successful Query
-        if (user) {
-          const response = successResponse(user);
-          res.json(response.toObject());
-        }
-
-        // Null Response
-        else {
-          const response = nullResponse(user);
-          res.status(404).send(response.toObject());
-        }
-
-      // Server Error
-      }).catch((err) => {
-        const response = serverErrorResponse(err);
-        res.status(500).send(response.toObject());
+        const response = success(apiCall, user);
+        res.json(response.toObject());
       })
 
-    // Internal Server Error
+      // Not Found Error
+      .catch((err) => {
+        const response = nullError(apiCall, err);
+        res.status(404).send(response.toObject());
+      })
+
+    // MongoDB Error
   } catch (e) {
-    const response = serverErrorResponse(e.message)
+    const response = serverError(apiCall, e.message)
     res.status(501).send(response.toObject());
   }
 });
