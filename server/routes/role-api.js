@@ -8,10 +8,16 @@
 */
 
 const express = require("express");
-const Role = require("../models/role");
+const router = express.Router();
 const Ajv = require("ajv");
-const bcrypt = require("bcryptjs");
-const saltRounds = 10;
+const ajv = new Ajv();
+const Role = require("../models/role");
+const {
+  success,
+  nullError,
+  serverError,
+  validationError
+} = require("../logs/api-functions");
 
 //Data validation schema for createRole api.
 const createRoleSchema = {

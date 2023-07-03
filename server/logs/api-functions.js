@@ -68,4 +68,41 @@ function validationError(apiCall, responseData) {
   return response
 }
 
-module.exports = { success, nullError, serverError, validationError };
+// Authentication Error Response
+function authenticationError(apiCall, responseData) {
+  errorLogger({
+    apiCall: apiCall,
+    message: "Invalid Username or password",
+    item: responseData
+  });
+  const response = new ServerResponse(
+    401,
+    "Invalid Username or password",
+    responseData
+  );
+  return response
+}
+
+// Disabled Account
+function disabledError(apiCall, responseData) {
+  errorLogger({
+    apiCall: apiCall,
+    message: "Your Account has been disabled.",
+    item: responseData
+  });
+  const response = new ServerResponse(
+    403,
+    "Your Account has been disabled.",
+    responseData
+  );
+  return response
+}
+
+module.exports = {
+  success,
+  nullError,
+  serverError,
+  validationError,
+  authenticationError,
+  disabledError
+};

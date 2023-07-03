@@ -8,10 +8,16 @@
 */
 
 const express = require("express");
-const Rank = require("../models/rank");
+const router = express.Router();
 const Ajv = require("ajv");
-const bcrypt = require("bcryptjs");
-const saltRounds = 10;
+const ajv = new Ajv();
+const Rank = require("../models/rank");
+const {
+  success,
+  nullError,
+  serverError,
+  validationError
+} = require("../logs/api-functions");
 
 //Data validation schema for createRank api.
 const createRankSchema = {

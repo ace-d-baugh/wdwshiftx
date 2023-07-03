@@ -8,11 +8,21 @@
 */
 
 const express = require("express");
-const User = require("../models/user");
-const Ajv = require("ajv");
-const bcrypt = require("bcryptjs");
-const saltRounds = 10;
 const router = express.Router();
+const Ajv = require("ajv");
+const ajv = new Ajv();
+const bcrypt = require("bcryptjs");  //Encrypts Password
+const saltRounds = 10;  // Hashes Password
+const User = require("../models/user");
+const {
+  success,
+  nullError,
+  serverError,
+  validationError,
+  authenticationError,
+  disabledError
+} = require("../logs/api-functions");
+
 
 //Data validation schemas
 const sessionSigninSchema = {

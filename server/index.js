@@ -12,11 +12,13 @@ const path = require("path");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 
-
-const UserRoute = require("./routes/user-api");
-//const Session = require("./routes/session-api");
-//const Ranks = require("./routes/rank-api");
-//const Invoice = require("./routes/invoice-api");
+// API Routes
+const Users = require("./routes/user-api");
+const Session = require("./routes/session-api");
+const Ranks = require("./routes/rank-api");
+const Roles = require("./routes/role-api");
+const Property = require("./routes/property-api");
+const Shifts = require("./routes/shift-api");
 
 const app = express(); // Express variable.
 
@@ -51,9 +53,12 @@ mongoose
 
 
 // API routes.
-app.use("/api/users", UserRoute);
-//app.use("/api/session", Session);
-//app.use("/api/rank", Ranks);
+app.use("/api/users", Users);
+app.use("/api/session", Session);
+app.use("/api/ranks", Ranks);
+app.use("/api/roles", Roles);
+app.use("/api/property", Property);
+app.use("/api/shifts", Shifts);
 
 // Error handler for 404 errors
 //app.use(function (req, res, next) {

@@ -8,13 +8,17 @@
 */
 
 const express = require("express");
-const User = require("../models/user");
 const router = express.Router();
-const { success, nullError, serverError, validationError } = require("../logs/api-functions");
 const Ajv = require("ajv");
-const bcrypt = require("bcryptjs");
+const ajv = new Ajv();
+const User = require("../models/user");
 const Rank = require("../models/rank");
-const saltRounds = 10;
+const {
+  success,
+  nullError,
+  serverError,
+  validationError
+} = require("../logs/api-functions");
 
 
 //Data validation schema for updateUser api.
