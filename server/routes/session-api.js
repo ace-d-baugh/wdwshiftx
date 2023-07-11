@@ -35,11 +35,87 @@ const sessionSigninSchema = {
   additionalProperties: false,
 };
 
+
 /*
 =====================================================
 ; User Sign In
 =====================================================
 */
+router.post("/signin", async (req, res) => {
+  const apiCall = "signin"
+  try {
+
+    let userSignin = req.body;
+
+    // Checks request body against the schema
+    const validator = ajv.compile(sessionSigninSchema);
+    const valid = validator(userSignin);
+
+    // Failed validation
+    if (!valid) {
+      const response = validationError(apiCall, req.body.email);
+      res.status(400).send(response.toObject());
+      return;
+    }
+
+    // findOne function to find a user by email
+    User.findOne({ email: req.body.email })
+      .then((user) => {
+
+      //  Invalid email
+      if (!user) {
+        const response = authenticationError(apiCall, req.body.email);
+        res.status(401).send(response.toObject());
+          return
+      }
+
+      // If account is disabled
+      if (user.isDisabled === true) {
+        const response = disabledError(apiCall, req.body.email);
+        res.status(403).send(response.toObject());
+        return
+      }
+
+      // Compare the string password with the hashed password in the database
+      if (user) {
+        console.log(user);
+        let passwordIsValid = bcrypt.compareSync(
+          req.body.password,
+          user.password
+        );
+
+        // Invalid password
+        if (!passwordIsValid) {
+          const response = authenticationError(apiCall, req.body.email);
+          res.status(401).send(response.toObject());
+          return
+        }
+
+        // Valid password and successful signin
+        const response = success(apiCall, user);
+        res.json(response.toObject());
+        return
+      }
+    })
+
+    // Not Found Error
+    .catch((undefined) => {
+      const response = nullError(apiCall, undefined);
+      res.status(404).send(response.toObject());
+    })
+
+    // Server Error
+    .catch((err) => {
+      const response = serverError(apiCall, err);
+      res.status(500).send(response.toObject());
+    })
+
+  // MongoDB Error
+  } catch (e) {
+    const response = serverError(apiCall, e.message)
+    res.status(501).send(response.toObject());
+  }
+});
 
 /*
 =====================================================

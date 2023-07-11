@@ -100,9 +100,15 @@ router.get("/:id", async (req, res) => {
       })
 
       // Not Found Error
-      .catch((err) => {
-        const response = nullError(apiCall, err);
+      .catch((undefined) => {
+        const response = nullError(apiCall, undefined);
         res.status(404).send(response.toObject());
+      })
+
+      // Server Error
+      .catch((err) => {
+        const response = serverError(apiCall, err);
+        res.status(500).send(response.toObject());
       })
 
     // MongoDB Error
