@@ -16,10 +16,10 @@ const RankSchema = require("../schemas/userRank");
 const userSchema = new Schema(
   {
     email: { type: String, unique: true, required: true }, // This is the username
-    password: { type: String, unique: true, required: true },
-    firstName: { type: String, unique: true, required: true },
-    lastName: { type: String, unique: true, required: true },
-    phone: { type: String, unique: true, required: true },
+    password: { type: String, required: true },
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
+    phone: { type: String, required: true },
     rank: {RankSchema},
     // rank: {
     //   type: mongoose.Schema.Types.ObjectId,

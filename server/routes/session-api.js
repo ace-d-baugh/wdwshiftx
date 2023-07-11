@@ -191,7 +191,6 @@ router.post("/register", async (req, res) => {
     // Attempts to save the registration to the database
     User.create(newRegistration)
       .then((user) => {
-
         const response = success(apiCall, user);
         res.json(response.toObject());
       })
@@ -201,13 +200,13 @@ router.post("/register", async (req, res) => {
         const response = serverError(apiCall, err);
         res.status(500).send(response.toObject());
       })
-
+/*
       // Email already in Use Error
       .catch((err) => {
         const response = duplicationError(apiCall, newRegistration.email);  // This block of code needs to be moved after getting the function to work properly
         res.status(401).send(response.toObject());
       })
-
+*/
     // MongoDB Error
   } catch (e) {
     const response = serverError(apiCall, e.message)
