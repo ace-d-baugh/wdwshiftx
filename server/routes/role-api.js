@@ -138,7 +138,7 @@ router.post("/", async (req, res) => {
 
     // If invalid return 400 Error
     if (!valid) {
-      const response = validationError(apiCall, newRole);
+      const response = validationError(apiCall, req.body.role);
       res.status(400).send(response.toObject());
       return;
     }
@@ -212,7 +212,7 @@ router.put("/:id", async (req, res) => {
 
     // If invalid return 400 Error
     if (!valid) {
-      const response = validationError(apiCall, updatedRole);
+      const response = validationError(apiCall, req.body.role);
       res.status(400).send(response.toObject());
       return;
     }
