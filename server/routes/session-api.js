@@ -157,6 +157,8 @@ router.post("/signin", async (req, res) => {
 
 // Under Construction  // Under Construction  // Under Construction  // Under Construction  // Under Construction  // Under Construction  // Under Construction
 
+// For some reason this function is trying to create a duplicate "users" collection and I am not sure where I went wrong.  More research is needed.
+
 router.post("/register", async (req, res) => {
   const apiCall = "register";
   try {
