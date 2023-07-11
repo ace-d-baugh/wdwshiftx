@@ -102,12 +102,12 @@ function disabledError(apiCall, responseData) {
 function duplicationError(apiCall, responseData) {
   errorLogger({
     apiCall: apiCall,
-    message: "This email is already in use",
+    message: "This record already exists",
     item: responseData
   });
   const response = new ServerResponse(
     401,
-    "This email is already in use",
+    "This record already exists",
     responseData
   );
   return response

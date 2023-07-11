@@ -77,7 +77,7 @@ router.get("/", async (req, res) => {
 
     // MongoDB Error
   } catch (e) {
-    const response = serverError(apiCall, e.message)
+    const response = serverError(apiCall, e.message);
     res.status(501).send(response.toObject());
   }
 });

@@ -48,6 +48,34 @@ const updateRankSchema = {
 ; Find All Ranks
 =====================================================
 */
+router.get("/", async (req, res) => {
+  const apiCall = "findAllRanks";
+  try {
+
+    // find function to find all Rank objects where the isDisabled field is set to false
+    Rank.find({})
+      .where("isDisabled")
+      .equals(false)
+      .then((rank) => {
+
+        // Successful Query
+        const response = success(apiCall, rank);
+        res.json(response.toObject());
+      })
+
+      // Server Error
+      .catch((err) => {
+        const response = serverError(apiCall, err);
+        res.status(500).send(response.toObject());
+      })
+
+  // MongoDB error
+  } catch (e) {
+    const response = serverError(apiCall, e.message);
+    res.status(501).send(response.toObject());
+  }
+});
+
 
 /*
 =====================================================
