@@ -118,11 +118,76 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+
 /*
 =====================================================
 ; Update User
 =====================================================
 */
+router.put("/:id", async (req, res) => {
+  const apiCall = "updateUser";
+  try {
+
+    // User object from the request body
+    let updatedUser = req.body;
+
+    // Checks current request body against the schema
+    const validator = ajv.compile(updateUserSchema);
+    const valid = validator(updatedUser);
+
+    // If invalid return 400 Error
+    if (!valid) {
+      const response = validationError(apiCall, updatedUser);
+      res.status(400).send(response.toObject());
+      return;
+    }
+
+    // Attempts to find user by id
+    User.findById(req.params.id)
+      .then((user) => {
+
+        // Updates the user object with user input
+        user.set({
+          email: req.body.email,
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          phone: req.body.phone,
+          rank: req.body.rank,
+          modifiedDate: new Date(),
+        });
+
+        // Attempts to save the updated user object to the database
+        user.save()
+          // Success
+          .then((user) => {
+            const response = success(apiCall, user);
+            res.json(response.toObject());
+          })
+          // Error
+          .catch((err) => {
+            const response = serverError(apiCall, err);
+            res.status(500).send(response.toObject());
+          })
+      })
+
+      // Not Found Error
+      .catch((undefined) => {
+        const response = nullError(apiCall, undefined);
+        res.status(404).send(response.toObject());
+      })
+
+      // Server Error
+      .catch((err) => {
+        const response = serverError(apiCall, err);
+        res.status(500).send(response.toObject());
+      })
+
+    // MongoDB Error
+  } catch (e) {
+    const response = serverError(apiCall, e.message)
+    res.status(501).send(response.toObject());
+  }
+});
 
 
 /*
@@ -131,6 +196,7 @@ router.get("/:id", async (req, res) => {
 =====================================================
 */
 router.post("/delete/:id", async (req, res) => {
+  const apiCall = "deleteUser";
   try {
     User.findById(req.params.id)
       .where("isDisabled")
@@ -138,34 +204,33 @@ router.post("/delete/:id", async (req, res) => {
       .then((user) => {
 
         // Successful Query
-        if (user) {
-          user.isDisabled = true;
-          user.save()
-            .then((user) => {
-              const response = successResponse(user);
-              res.json(response.toObject());
-            })
-            .catch((err) => {
-              const response = serverErrorResponse(err);
-              res.status(500).send(response.toObject());
-            })
-        }
+        user.isDisabled = true;
+        user.save()
+          .then((user) => {
+            const response = success(apiCall, user);
+            res.json(response.toObject());
+          })
+          .catch((err) => {
+            const response = serverError(apiCall, err);
+            res.status(500).send(response.toObject());
+          })
+      })
 
-        // Null Response
-        else {
-          const response = nullResponse(user);
-          res.status(404).send(response.toObject());
-        }
+      // Not Found Error
+      .catch((undefined) => {
+        const response = nullError(apiCall, undefined);
+        res.status(404).send(response.toObject());
+      })
 
       // Server Error
-      }).catch((err) => {
-        const response = serverErrorResponse(err);
+      .catch((err) => {
+        const response = serverError(apiCall, err);
         res.status(500).send(response.toObject());
       })
 
     // Internal Server Error
   } catch (e) {
-    const response = serverErrorResponse(e.message)
+    const response = serverError(apiCall, e.message)
     res.status(501).send(response.toObject());
   }
 });
@@ -185,6 +250,7 @@ router.post("/delete/:id", async (req, res) => {
 */
 
 router.get("/rank/:id", async (req, res) => {
+  const apiCall = "findUserRank";
   try {
     User.findById(req.params.id)
       .where("isDisabled")
@@ -192,33 +258,32 @@ router.get("/rank/:id", async (req, res) => {
       .then((user) => {
 
         // Successful Query
-        if (user) {
-          Rank.findById(user.rank)
-            .then((rank) => {
-              const response = successResponse(rank);
-              res.json(response.toObject());
-            })
-            .catch((err) => {
-              const response = serverErrorResponse(err);
-              res.status(500).send(response.toObject());
-            })
-        }
+        Rank.findById(user.rank)
+          .then((rank) => {
+            const response = success(apiCall, rank);
+            res.json(response.toObject());
+          })
+          .catch((err) => {
+            const response = serverError(apiCall, err);
+            res.status(500).send(response.toObject());
+          })
+      })
 
-        // Null Response
-        else {
-          const response = nullResponse(user);
-          res.status(404).send(response.toObject());
-        }
+      // Not Found Error
+      .catch((undefined) => {
+        const response = nullError(apiCall, undefined);
+        res.status(404).send(response.toObject());
+      })
 
       // Server Error
-      }).catch((err) => {
-        const response = serverErrorResponse(err);
+      .catch((err) => {
+        const response = serverError(apiCall, err);
         res.status(500).send(response.toObject());
       })
 
     // Internal Server Error
   } catch (e) {
-    const response = serverErrorResponse(e.message)
+    const response = serverError(apiCall, e.message)
     res.status(501).send(response.toObject());
   }
 });

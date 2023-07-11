@@ -98,11 +98,27 @@ function disabledError(apiCall, responseData) {
   return response
 }
 
+// Authentication Error Response
+function duplicationError(apiCall, responseData) {
+  errorLogger({
+    apiCall: apiCall,
+    message: "This email is already in use",
+    item: responseData
+  });
+  const response = new ServerResponse(
+    401,
+    "This email is already in use",
+    responseData
+  );
+  return response
+}
+
 module.exports = {
   success,
   nullError,
   serverError,
   validationError,
   authenticationError,
-  disabledError
+  disabledError,
+  duplicationError
 };
